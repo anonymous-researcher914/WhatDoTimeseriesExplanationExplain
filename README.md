@@ -7,10 +7,9 @@
 
 ```
 
-dagfaith/                   Supporting library TEIG and its evaluations are built on
+dagfaith/                   Supporting library for experiments and its evaluations are built on
   config.py                 Global seeding, YAML config loader, results_dir
-  dbn.py                    DBN / MDDAG data generation (general sample_dbn + Scenario I/II,
-                             the C1/C2 counterexamples), on-manifold conditional samplers
+  dbn.py                    DBN / MDDAG data generation , on-manifold conditional samplers
   cond_baseline.py          Conditional baseline E[x_s|x_-s] and interpolation path TEIG
                              integrates along; analytic (exact) Gaussian conditional models
   oracle.py                 Analytic oracle forecasters (exact conditional-mean models) whose
