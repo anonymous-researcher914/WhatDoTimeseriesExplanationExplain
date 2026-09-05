@@ -58,21 +58,9 @@ tigramite/…) are needed; TEIG is the only attribution method in this codebase.
 ## Quickstart
 
 ```bash
-# Run everything (recovery + faithfulness) in one shot
-python run_all.py
-
-# Fast smoke run with small sizes
-python run_all.py --quick
-
-# Or run each experiment individually
-python experiments/run_recovery.py
-python experiments/run_faithfulness.py
-
-# TEIG + OMIC on a real trained forecaster (GRU/LSTM/TCN), not the analytic oracle
-python experiments/run_trained.py
+# Run everything  in one shot
+python run_mainpaper_experiment.py
 ```
-
-All commands accept `--config <path>` (default `configs/default.yaml`) and `--quick`.
 
 ---
 
