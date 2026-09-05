@@ -50,8 +50,7 @@ run_all.py                   One-shot runner for main paper
 pip install -r requirements.txt
 ```
 
-Deps: `numpy scipy pandas torch pyyaml` — no baseline-explainer libraries (SHAP/LIME/captum/
-tigramite/…) are needed; TEIG is the only attribution method in this codebase.
+Deps: `numpy scipy pandas torch pyyaml`
 
 ---
 
