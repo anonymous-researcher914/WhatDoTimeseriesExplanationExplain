@@ -1,0 +1,15 @@
+% Table: VAR synthetic OMIC_support/AUOMIC, GOOD/RANDOM/BAD/ANTI attribution
+% (omic_iclr.md Block B1 -- the controlled metric-validation experiment)
+% s=|S|/|E| is the graph density (H1) -- the full-complement AUOMIC column is a
+% CLOSED FORM of s for GOOD/BAD/ANTI (omic_new.md H0), not an empirical finding;
+% auomic_restricted/tau_restricted (H2) are density-INDEPENDENT ranking-only reads.
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+method & n_plus & s=|S|/|E| & omic_support & omic_support_std & auomic & auomic_std & auomic_restricted & auomic_restricted_std & tau_restricted \\
+\midrule
+GOOD & 125 & 0.651 & 1.000 & 0.000 & 0.999 & 0.000 & 0.998 & 0.000 & 0.964 \\
+RANDOM & 125 & 0.651 & 0.503 & 0.015 & 0.489 & 0.055 & 0.484 & 0.059 & -0.029 \\
+BAD & 125 & 0.651 & 1.000 & 0.000 & 0.479 & 0.000 & 0.001 & 0.000 & -0.964 \\
+ANTI & 125 & 0.651 & 0.001 & 0.000 & 0.506 & 0.001 & 0.958 & 0.000 & 0.983 \\
+\bottomrule
+\end{tabular}

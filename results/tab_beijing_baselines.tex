@@ -1,0 +1,23 @@
+% Table: Beijing baselines on the same edge set (omic_new.md E1), grouped under
+% each task. COND_OCCLUSION (attribution = |Delta_dir| itself) UPPER-BOUNDS what
+% any explainer can score on AUOMIC_dir -- without this row the real method's own
+% row can't be interpreted. RANDOM fixes the empirical chance level at the actual
+% |E+|/|E| ratio (omic_iclr.md A3).
+\begin{tabular}{llrrr}
+\toprule
+task & baseline & omic_support_dir & auomic_dir & auomic_tot \\
+\midrule
+forecasting (KARMA) & RANDOM & 0.498 & 0.476 & 0.462 \\
+forecasting (KARMA) & GRAD_X_INPUT & 0.986 & 0.988 & 0.967 \\
+forecasting (KARMA) & IG_ZERO & 0.987 & 0.989 & 0.968 \\
+forecasting (KARMA) & COND_OCCLUSION & 1.000 & 1.000 & 0.998 \\
+regression (TimeSHAP) & RANDOM & 0.508 & 0.497 & 0.489 \\
+regression (TimeSHAP) & GRAD_X_INPUT & 0.765 & 0.818 & 0.808 \\
+regression (TimeSHAP) & IG_ZERO & 0.772 & 0.818 & 0.810 \\
+regression (TimeSHAP) & COND_OCCLUSION & 1.000 & 1.000 & 0.994 \\
+classification (TIMING) & RANDOM & 0.505 & 0.486 & 0.479 \\
+classification (TIMING) & GRAD_X_INPUT & 0.747 & 0.864 & 0.837 \\
+classification (TIMING) & IG_ZERO & 0.744 & 0.865 & 0.835 \\
+classification (TIMING) & COND_OCCLUSION & 1.000 & 1.000 & 0.963 \\
+\bottomrule
+\end{tabular}

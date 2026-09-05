@@ -1,0 +1,95 @@
+seed: 42
+results_dir: results
+
+
+var_omic:
+  seed: 0
+  D: 8
+  T: 3
+  n: 500
+  sparsity: 0.65
+  noise_std: 0.1
+  delta_B: 32     # on-manifold draws per edge (dagfaith.intervention.delta_effect)
+  n_seeds: 5      # repeats (varying only Delta's own draw RNG) for a CI band
+  rho_max: 0.75
+  quick:
+    D: 4
+    T: 2
+    n: 100
+    sparsity: 0.45  # same density-vs-BAD-floor reasoning as above, tuned for this smaller D*T*D
+    noise_std: 0.1
+    delta_B: 8
+    n_seeds: 10
+    rho_max: 0.75
+
+
+beijing_multitask:
+  seed: 0
+  ckpt_dir: outputs/checkpoints/beijing_multitask
+  n_eval: 200         
+  n_folds: 5
+  ts_nsamples: 200     # TimeShap KernelSHAP coalitions (regression task)
+  timing_nsamples: 50  # TIMING path-integral samples (classification task)
+  clf_epochs: 30       # BeijingClassifier training epochs
+  omic:
+    B: 16              # on-manifold draws per evaluated edge
+    rho_max: 0.75
+    top_frac: 0.25     # top-scoring fraction of source cells claimed (regression/classification)
+  quick:
+    n_eval: 40
+    n_folds: 2
+    ts_nsamples: 40
+    timing_nsamples: 10
+    clf_epochs: 3
+    omic: {B: 8, rho_max: 0.75, top_frac: 0.25}
+    # DATASETS["beijing_pm25"]'s own M/K_max (comparison_realdata.py) are tuned for a real run;
+    # TreeKernelEstimator.fit() at those settings takes minutes regardless of the knobs above.
+    karma_overrides: {M: 30, K_max: 4, n_pool_min: 3}
+
+var_mediation:
+  seed: 0
+  n: 800
+  T: 3
+  m: 0.8            # X1(t-1) -> X2(t) coupling: the planted mediation edge's strength
+  ar: 0.5           # each variable's own AR(1) self-coupling
+  beta: 1.0         # X2@(T-1) -> Y structural weight (mediator's own direct edge into f)
+  gamma: 1.0        # X3@(T-1) -> Y structural weight (the known direct edge)
+  noise_std: 0.3
+  target_noise_std: 0.05
+  delta_B: 32       # on-manifold draws per edge (dagfaith.intervention_tot.delta_tot/delta_dir)
+  n_seeds: 5        # repeats (varying only Delta's own draw RNG) for a CI band
+  rho_max: 0.75
+  top_k: 5
+  quick:
+    n: 150
+    T: 2
+    m: 0.8
+    ar: 0.5
+    beta: 1.0
+    gamma: 1.0
+    noise_std: 0.3
+    target_noise_std: 0.05
+    delta_B: 8
+    n_seeds: 10
+    rho_max: 0.75
+    top_k: 3
+
+var_noise_floor:
+  seed: 0
+  D: 8
+  T: 3
+  n: 500
+  sparsity: 0.5
+  noise_std: 0.1
+  delta_B: 32
+  rho_max: 0.75
+  floors: [0.0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8]
+  quick:
+    D: 4
+    T: 2
+    n: 100
+    sparsity: 0.45
+    noise_std: 0.1
+    delta_B: 8
+    rho_max: 0.75
+    floors: [0.0, 0.2, 0.4, 0.8]
